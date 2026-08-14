@@ -1,8 +1,9 @@
 #include "structure.h"
+#include <stdbool.h>
 #include <stdio.h>
 
 void render() {
-    delete_task(); // zalupa-zaglushka, nihuya ne delaet
+    Task task;
 
     const char bold_text[] = "\x1b[1m";
     const char cyan_text[] = "\x1b[36m";
@@ -46,4 +47,15 @@ void render() {
     printf("\n%s%sProgramm has finished work\n", bold_text, cyan_text);
 }
 
-int main() { render(); }
+int main() {
+    render();
+    
+    Task storage[50]; // !сделать динамическим
+
+    FILE *f = fopen("tasks.csv", "r");
+    if (f != NULL) {
+        csv_parse(f, storage);
+
+        fclose(f);
+    }
+}
