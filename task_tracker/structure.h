@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stddef.h>
 #include <stdio.h>
 
 #define MAX_COUNT_OF_TASKS 50
@@ -14,7 +15,7 @@ typedef struct {
 
 // storage
 void csv_parse(FILE *file, Task *storage);
-void save_to_csv(Task storage);
+void save_to_csv(Task storage[], size_t len);
 
 // control
 void delete_task();
