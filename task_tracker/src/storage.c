@@ -1,6 +1,5 @@
+#include "../includes/storage.h"
 #include "../includes/structure.h"
-#include <stddef.h>
-#include <stdio.h>
 
 void csv_parse(FILE *file, Task *storage) {
     char buffer[200];
@@ -10,7 +9,7 @@ void csv_parse(FILE *file, Task *storage) {
         if (sscanf(buffer, "%d;%99[^;];%d;%d", &storage[index].id,
                    storage[index].title, &storage[index].is_completed,
                    &storage[index].priority) != 4) {
-            printf("csv-read error: record id:%d is corrupted\n",
+            printf("csv-read error: Task id-%d is corrupted",
                    storage[index].id);
         }
 
@@ -19,7 +18,7 @@ void csv_parse(FILE *file, Task *storage) {
 }
 
 void save_to_csv(Task storage[], size_t len) {
-    FILE *file = fopen("tasks.csv", "w");
+    FILE *file = fopen(SAVE_FILE_NAME, "w");
     if (file != NULL) {
 
         for (int i = 0; i < len; i++) {

@@ -1,7 +1,9 @@
-#include "includes/gui.h"
-#include "includes/structure.h"
 #include <stdbool.h>
 #include <stdio.h>
+
+#include "includes/control.h"
+#include "includes/gui.h"
+#include "includes/storage.h"
 
 int main() {
     Task storage[50]; // !сделать динамическим
@@ -9,9 +11,8 @@ int main() {
     FILE *f = fopen("tasks.csv", "r");
     if (f != NULL) {
         csv_parse(f, &storage[0]);
-
-        fclose(f);
     }
+    fclose(f);
 
     int action = -1;
     print_welcome_message();
@@ -20,7 +21,8 @@ int main() {
         print_user_input_message();
         if (scanf("%d", &action) != 1 || !(0 <= action && action <= 5)) {
             int c;
-            while ((c = getchar()) != '\n' && c != EOF);
+            while ((c = getchar()) != '\n' && c != EOF)
+                ;
             print_incorrect_action_message();
             continue;
         }
@@ -40,9 +42,10 @@ int main() {
             break;
         }
         int c;
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' && c != EOF)
+            ;
     }
 
-    //save_to_csv(storage, 50);
-    //пока это ломает файл
+    // save_to_csv(storage, 50);
+    // пока это ломает файл
 }

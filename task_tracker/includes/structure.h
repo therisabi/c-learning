@@ -12,10 +12,3 @@ typedef struct {
     int is_completed;
     int priority;
 } Task;
-
-// storage
-void csv_parse(FILE *file, Task *storage);
-void save_to_csv(Task storage[], size_t len);
-
-// control
-void delete_task();
