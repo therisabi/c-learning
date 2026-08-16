@@ -8,9 +8,10 @@
 int main() {
     Task storage[50]; // !сделать динамическим
 
+    size_t len = 0; // количество тасков
     FILE *f = fopen("tasks.csv", "r");
     if (f != NULL) {
-        csv_parse(f, &storage[0]);
+        len = csv_parse(f, &storage[0]);
     }
     fclose(f);
 
@@ -46,6 +47,6 @@ int main() {
             ;
     }
 
-    // save_to_csv(storage, 50);
+    save_to_csv(storage, len);
     // пока это ломает файл
 }

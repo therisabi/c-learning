@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define MAX_COUNT_OF_TASKS 50
-#define SAVE_FILE_NAME "tasks.csv"
+#define SAVE_FILE_PATH "tasks.csv"
 
 typedef struct {
     int id;
