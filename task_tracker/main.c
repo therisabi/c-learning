@@ -1,5 +1,5 @@
-#include "gui.h"
-#include "structure.h"
+#include "includes/gui.h"
+#include "includes/structure.h"
 #include <stdbool.h>
 #include <stdio.h>
 
