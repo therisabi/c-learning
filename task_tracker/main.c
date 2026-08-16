@@ -18,10 +18,9 @@ int main() {
     while (true) {
         print_actions_list_message();
         print_user_input_message();
-        if (scanf("%d", &action) != 1 || !(0 <= action && action <= 4)) {
+        if (scanf("%d", &action) != 1 || !(0 <= action && action <= 5)) {
             int c;
-            while ((c = getchar()) != '\n' && c != EOF)
-                ;
+            while ((c = getchar()) != '\n' && c != EOF);
             print_incorrect_action_message();
             continue;
         }
@@ -40,7 +39,10 @@ int main() {
             print_program_finished_message();
             break;
         }
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
     }
 
-    save_to_csv(storage, 50);
+    //save_to_csv(storage, 50);
+    //пока это ломает файл
 }

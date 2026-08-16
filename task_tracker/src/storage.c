@@ -10,7 +10,7 @@ void csv_parse(FILE *file, Task *storage) {
         if (sscanf(buffer, "%d;%99[^;];%d;%d", &storage[index].id,
                    storage[index].title, &storage[index].is_completed,
                    &storage[index].priority) != 4) {
-            printf("csv-read error: record id:%d is corrupted",
+            printf("csv-read error: record id:%d is corrupted\n",
                    storage[index].id);
         }
 
