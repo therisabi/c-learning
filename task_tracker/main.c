@@ -6,10 +6,10 @@
 #include "includes/storage.h"
 
 int main() {
-    Task storage[50]; // !сделать динамическим
+    Task storage[50];  // !сделать динамическим
 
-    size_t len = 0; // количество тасков
-    FILE *f = fopen("tasks.csv", "r");
+    size_t len = 0;  // количество тасков
+    FILE* f = fopen("tasks.csv", "r");
     if (f != NULL) {
         len = csv_parse(f, &storage[0]);
     }
@@ -22,8 +22,7 @@ int main() {
         print_user_input_message();
         if (scanf("%d", &action) != 1 || !(0 <= action && action <= 5)) {
             int c;
-            while ((c = getchar()) != '\n' && c != EOF)
-                ;
+            while ((c = getchar()) != '\n' && c != EOF);
             print_incorrect_action_message();
             continue;
         }
@@ -43,8 +42,7 @@ int main() {
             break;
         }
         int c;
-        while ((c = getchar()) != '\n' && c != EOF)
-            ;
+        while ((c = getchar()) != '\n' && c != EOF);
     }
 
     save_to_csv(storage, len);
