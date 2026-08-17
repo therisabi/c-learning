@@ -12,22 +12,28 @@ int main() {
     FILE* f = fopen("tasks.csv", "r");
     if (f != NULL) {
         len = csv_parse(f, &storage[0]);
+        fclose(f);
     }
-    fclose(f);
 
     int action = -1;
+    int c;
     print_welcome_message();
     while (true) {
         print_actions_list_message();
         print_user_input_message();
         if (scanf("%d", &action) != 1 || !(0 <= action && action <= 5)) {
-            int c;
             while ((c = getchar()) != '\n' && c != EOF);
             print_incorrect_action_message();
             continue;
         }
+        while ((c = getchar()) != '\n' && c != EOF);
         print_reset_text();
         if (action == 1) {
+            char title[MAX_TITLE_LEN];
+            print_create_task_message();
+            print_user_input_message();
+            scanf("%[^\n]", title);  // ну вот тут короче доделать да
+            printf("%s", title);
             // вот здесь реализация добавления 1 новой задачи в файл
         } else if (action == 2) {
             // здесь изменить описание уже существующей задачи из файла
@@ -41,7 +47,6 @@ int main() {
             print_program_finished_message();
             break;
         }
-        int c;
         while ((c = getchar()) != '\n' && c != EOF);
     }
 

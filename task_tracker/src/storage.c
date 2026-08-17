@@ -12,7 +12,7 @@ int csv_parse(FILE* file, Task* storage) {
         if (sscanf(buffer, "%d;%99[^;];%d;%d", &storage[index].id,
                    storage[index].title, &storage[index].is_completed,
                    &storage[index].priority) != 4) {
-            printf("csv-read error: Task id-%d is corrupted",
+            printf("csv-read error: Task id-%d is corrupted\n",
                    storage[index].id);
         }
 
@@ -30,9 +30,8 @@ void save_to_csv(Task storage[], size_t len) {
             fprintf(file, "%d;%s;%d;%d\n", storage[i].id, storage[i].title,
                     storage[i].is_completed, storage[i].priority);
         }
+        fclose(file);
     } else {
         printf("save error: failed to open file");
     }
-
-    fclose(file);
 }
