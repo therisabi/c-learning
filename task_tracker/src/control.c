@@ -1,4 +1,4 @@
-#include "../includes/control.h"
+#include "structure.h"
 
 #include <stddef.h>
 

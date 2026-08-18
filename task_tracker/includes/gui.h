@@ -6,4 +6,6 @@ void print_user_input_message();
 void print_reset_text();
 void print_incorrect_action_message();
 void print_create_task_message();
+void print_choose_task_id_message();
+void print_incorrect_task_id_message();
 void print_program_finished_message();

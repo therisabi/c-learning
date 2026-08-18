@@ -31,8 +31,16 @@ void print_incorrect_action_message() {
 }
 
 void print_create_task_message() {
-    printf("\n%sChoose title for your task (maximum %d symbols)%s", cyan_text, MAX_TITLE_LEN - 1,
+    printf("\n%sChoose title for your task (maximum %d symbols)%s\n", cyan_text, MAX_TITLE_LEN - 1,
            reset_text);
+}
+
+void print_choose_task_id_message() {
+    printf("\n%sChoose priority for your task (greater than 0)%s\n", cyan_text, reset_text);
+}
+
+void print_incorrect_task_id_message() {
+    printf("\n%sIncorrect priority, try to create task again%s\n\n", red_text, reset_text);
 }
 
 void print_program_finished_message() {

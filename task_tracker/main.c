@@ -29,12 +29,20 @@ int main() {
         while ((c = getchar()) != '\n' && c != EOF);
         print_reset_text();
         if (action == 1) {
-            char title[MAX_TITLE_LEN];
+            char title[MAX_TITLE_LEN - 1];
+            int priority;
+            char format[20];
+            snprintf(format, sizeof(format), "%%%ds", MAX_TITLE_LEN - 1);
             print_create_task_message();
             print_user_input_message();
-            scanf("%[^\n]", title);  // ну вот тут короче доделать да
-            printf("%s", title);
-            // вот здесь реализация добавления 1 новой задачи в файл
+            scanf(format, title);
+            print_choose_task_id_message();
+            print_user_input_message();
+            if (scanf("%d", &priority) == 1 && (priority > 0)) {
+                // и вот сюда короче нужно реализацию добавление задачи в файл
+            } else {
+                print_incorrect_task_id_message();
+            }
         } else if (action == 2) {
             // здесь изменить описание уже существующей задачи из файла
         } else if (action == 3) {
